@@ -1,10 +1,81 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
 <body>
+<header>
+</header>
+<!-- ヘッダーは画面レイアウトの際に作成するのでタグのみ生成 -->
 
+<div class=”main”>
+　　<div class=”~~” th:if ~~~...>
+　　　　<input th:action~~~... />
+
+		<a th:href="@{/logout}" class="logout-btn">ログアウト</a>
+　　</div>
+
+	<div th:if="${errorMessages}" th:each="error : ${errorMessages}">
+		<a th:text="${error}"></a>
+	</div>
+
+	<h2>ようこそ、<th:text="${loginUser.name} " />さん</h2>
+	<p>モチベーションタイプは、</p>><h3><th:text="${loginUser.type_id} " /></h3><p>のようです</p>
+
+　　<table>
+		<thead>
+	　　　　<tr>
+	　　　　　　<th>欲求</th>
+	　　　　　　<th>KEY</th>
+	　　　　　　<th>初対面</th>
+	　　　　　　<th>Happy Word</th>
+	　　　　　　<th>趣向</th>
+	　　　　　　<th>ストレス</th>
+	　　　　　　<th>強み</th>
+	　　　　　　<th>課題</th>
+	　　　　　　<td></td>
+	　　　　</tr>
+		</thead>
+		<tbody>
+			<tr  th:each="type : ${types}">
+				<td th:text="${tyepe.desire}"></td>
+				<td th:text="${tyepe.type_key}"></td>
+				<td th:text="${tyepe.first_meeting}"></td>
+				<td th:text="${tyepe.happy_word}"></td>
+				<td th:text="${tyepe.taste}"></td>
+				<td th:text="${tyepe.stress}"></td>
+				<td th:text="${tyepe.strengths}"></td>
+				<td th:text="${tyepe.task}"></td>
+			</tr>
+		</tbody>
+　　</table>
+
+	<div>
+		<div>
+		<!-- 円グラフを挿入予定 -->
+		</div>
+
+		<div>
+			<h3>あなたの前回のモチベーションタイプの割合は</h3>
+			<table>
+				<thead>
+					<th>アナライズ</th>
+					<th>ボランティア</th>
+					<th>ドライブ</th>
+					<th>クリエイト</th>
+				</thead>
+				<tbody>
+					<tr th:each=":${results}">
+					<td th:text="${tyepe.analyze}"></td>
+					<td th:text="${tyepe.volunteer}"></td>
+					<td th:text="${tyepe.drive}"></td>
+					<td th:text="${tyepe.create}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+<footer>
+</footer>
+<!-- フッターはタグのみ生成 -->
 </body>
 </html>
