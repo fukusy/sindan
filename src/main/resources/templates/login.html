@@ -2,9 +2,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>モチベーションタイプ診断</title>
 </head>
 <body>
+	<header> </header>
+	<div class="main">
+		<div class="errorMessages" th:if="${errorMessages != null}">
+			<ul th:each="errorMessages: ${errorMessages}">
+				<li th:text="${errorMessages}"></li>
+			</ul>
+		</div>
+		<div class="login">
+			<form method="post" th:action="@{/login}" th:object="${formModel}">
+				<br>
+				<div class="form">
+					<label class="form-label">account</label> <input type="text"
+						name="account" th:value="*{account}" />
+				</div>
+				<div class="form">
+					<label class="form-label">password</label> <input type="password"
+						name="password" th:value="*{password}" />
+				</div>
+				<input type="submit" value="Sign In" class="button" /> <br /> <br />
+			</form>
+		</div>
+	</div>
+	<footer> </footer>
 
 </body>
 </html>
