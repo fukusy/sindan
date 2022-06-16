@@ -1,10 +1,118 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<title>管理者画面</title>
+	</head>
+	<body>
+		<div class=”main”>
+			<h1>モチベーションタイプ診断</h1>
+			<a th:href="@{/top}" class="home-btn">社員一覧画面</a>
+			<a th:href="@{/logout}" >ログアウト</a>
 
-</body>
+			<div>弊社のモチベーションタイプは<strong th:text=${result.typeId}></strong>です。</div>
+
+			<div class="graph">
+				<div class="graph-circle"></div>
+				<div class="graph_dot"></div>
+			</div>
+
+			<div>弊社全体のモチベーションタイプ</div>
+			<table>
+				<tr>
+					<th>ドライブ</th>
+					<th>アナライズ</th>
+					<th>クリエイト</th>
+					<th>ボランティア</th>
+				</tr>
+				<tr>
+					<td th:href="${drive}"></td>
+					<td th:href="${analyze}"></td>
+					<td th:href="${create}"></td>
+					<td th:href="${volunteer}"></td>
+				</tr>
+			</table>
+
+
+			<!-- 下記部署グラフ -->
+			<div>部署によっては以下の通りです</div>
+
+			<div class="graph">
+				<div class="graph-dot">
+					<div>総務部</div>
+					<table>
+						<tr>
+							<th>ドライブ</th>
+							<th>アナライズ</th>
+							<th>クリエイト</th>
+							<th>ボランティア</th>
+						</tr>
+						<tr>
+							<td th:href="${greatestDrive}"></td>
+							<td th:href="${greatestAnalyze}"></td>
+							<td th:href="${greatestCreate}"></td>
+							<td th:href="${greatestVolunteer}"></td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="graph_dot">
+					<div>情報部</div>
+					<table>
+						<tr>
+							<th>ドライブ</th>
+							<th>アナライズ</th>
+							<th>クリエイト</th>
+							<th>ボランティア</th>
+						</tr>
+						<tr>
+							<td th:href="${infoDrive}"></td>
+							<td th:href="${infoAnalyze}"></td>
+							<td th:href="${infoCreate}"></td>
+							<td th:href="${infoVolunteer}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="graph">
+				<div class="graph-dot">
+					<div>営業部</div>
+					<table>
+						<tr>
+							<th>ドライブ</th>
+							<th>アナライズ</th>
+							<th>クリエイト</th>
+							<th>ボランティア</th>
+						</tr>
+						<tr>
+							<td th:href="${salesDrive}"></td>
+							<td th:href="${salesAnalyze}"></td>
+							<td th:href="${salesCreate}"></td>
+							<td th:href="${salesVolunteer}"></td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="graph_dot">
+					<div>技術部</div>
+					<table>
+						<tr>
+							<th>ドライブ</th>
+							<th>アナライズ</th>
+							<th>クリエイト</th>
+							<th>ボランティア</th>
+						</tr>
+						<tr>
+							<td th:href="${techDrive}"></td>
+							<td th:href="${techAnalyze}"></td>
+							<td th:href="${techCreate}"></td>
+							<td th:href="${techVolunteer}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<footer>
+		</footer>
+	</body>
 </html>
