@@ -16,4 +16,8 @@ public class AccountService {
 		return userRepository.findByAccount(account);
 	}
 
+	//パスワード変更処理
+	public void save(User loginUser) {
+		userRepository.save(loginUser);
+	}
 }
