@@ -64,10 +64,12 @@ public class AccountController {
 
 		String defaultPass = loginUser.getAccount();
 
+		//パスワード変更を行っているかで初回ログインのチェック
 		if (passwordEncoder.matches(defaultPass, loginUser.getPassword())) {
 			return new ModelAndView("redirect:/password");
 		}
 
+		//権限によって画面遷移先の指定
 		if (loginUser.getStatus() == 0) {
 			return new ModelAndView("redirect:/manager");
 		}else{
@@ -80,6 +82,17 @@ public class AccountController {
 	public ModelAndView passwordMenu() {
 		ModelAndView mav = new ModelAndView();
 		User loginUser = (User)session.getAttribute("loginUser");
+
+		//初回ログイン以外の人が入れないように設定
+		String defaultPass = loginUser.getAccount();
+		if (!passwordEncoder.matches(defaultPass, loginUser.getPassword())) {
+			User user = new User();
+			String errorMessages = "不正なパラメータが入力されました";
+			mav.addObject("errorMessages",errorMessages);
+			mav.setViewName("/login");
+			mav.addObject("formModel", user);
+			return mav;
+		}
 		mav.addObject("formModel", loginUser);
 		return mav;
 	}
@@ -104,6 +117,7 @@ public class AccountController {
 
 		accountService.save(loginUser);
 
+		//権限によって画面遷移先の指定
 		if (loginUser.getStatus() == 0) {
 			return new ModelAndView("redirect:/manager");
 		}else{
@@ -147,7 +161,7 @@ public class AccountController {
 		} else if (!newPassword.matches("^(?=.+\\d)(?=.+[a-zA-Z]).*$")) {
 			errorMessages.add("パスワードは英数字を含む6文字以上で入力してください");
 		}  else if (!(newPassword.equals(confirmPassword))) {
-			errorMessages.add("入力したパスワードと確認用パスワードが一致しません");
+			errorMessages.add("新しいパスワードと確認用パスワードが一致しません");
 		}
 
 		if (errorMessages.size() != 0) {
