@@ -2,9 +2,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>モチベーションタイプ診断</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&display=swap">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
+	<header> </header>
+	<div class="main">
+		<div class="login">
+			<div class="errorMessages" th:if="${errorMessages != null}">
+				<ul th:each="errorMessages: ${errorMessages}">
+					<li th:text="${errorMessages}"></li>
+				</ul>
+			</div>
+			<form method="post" th:action="@{/login}" th:object="${formModel}">
+				<br>
+				<div class="form">
+					<label class="form-label">社員番号：</label> <input type="text"
+						name="account" th:value="*{account}"/>
+				</div>
+				<div class="form">
+					<label class="form-label">パスワード：</label> <input type="password"
+						name="password" />
+				</div>
+				<input type="submit" value="ログイン" class="button" /> <br />
+			</form>
+		</div>
+	</div>
+	<footer> </footer>
 
 </body>
 </html>
