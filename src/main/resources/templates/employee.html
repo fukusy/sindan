@@ -62,11 +62,11 @@
 					<th>クリエイト</th>
 				</thead>
 				<tbody>
-					<tr th:each=":${results}">
-					<td th:text="${tyepe.analyze}"></td>
-					<td th:text="${tyepe.volunteer}"></td>
-					<td th:text="${tyepe.drive}"></td>
-					<td th:text="${tyepe.create}"></td>
+					<tr th:each="result:${results}">
+					<td th:text="${result.analyze}"></td>
+					<td th:text="${result.volunteer}"></td>
+					<td th:text="${result.drive}"></td>
+					<td th:text="${result.create}"></td>
 					</tr>
 				</tbody>
 			</table>
