@@ -10,7 +10,7 @@
 			<a th:href="@{/top}" class="home-btn">社員一覧画面</a>
 			<a th:href="@{/logout}" >ログアウト</a>
 
-			<div>弊社のモチベーションタイプは<strong th:text=${result.typeId}></strong>です。</div>
+			<div>弊社のモチベーションタイプは<strong th:text=${type}></strong>です。</div>
 
 			<div class="graph">
 				<div class="graph-circle"></div>
@@ -18,7 +18,7 @@
 			</div>
 
 			<div>弊社全体のモチベーションタイプ</div>
-			<table>
+			<table border="1">
 				<tr>
 					<th>ドライブ</th>
 					<th>アナライズ</th>
@@ -26,10 +26,11 @@
 					<th>ボランティア</th>
 				</tr>
 				<tr>
-					<td th:href="${drive}"></td>
-					<td th:href="${analyze}"></td>
-					<td th:href="${create}"></td>
-					<td th:href="${volunteer}"></td>
+
+					<td th:text="${drive}"></td>
+					<td th:text="${analyze}"></td>
+					<td th:text="${create}"></td>
+					<td th:text="${volunteer}"></td>
 				</tr>
 			</table>
 
@@ -40,7 +41,7 @@
 			<div class="graph">
 				<div class="graph-dot">
 					<div>総務部</div>
-					<table>
+					<table border="1">
 						<tr>
 							<th>ドライブ</th>
 							<th>アナライズ</th>
@@ -48,17 +49,17 @@
 							<th>ボランティア</th>
 						</tr>
 						<tr>
-							<td th:href="${greatestDrive}"></td>
-							<td th:href="${greatestAnalyze}"></td>
-							<td th:href="${greatestCreate}"></td>
-							<td th:href="${greatestVolunteer}"></td>
+							<td th:text="${greatestDrive}"></td>
+							<td th:text="${greatestAnalyze}"></td>
+							<td th:text="${greatestCreate}"></td>
+							<td th:text="${greatestVolunteer}"></td>
 						</tr>
 					</table>
 				</div>
 
 				<div class="graph_dot">
 					<div>情報部</div>
-					<table>
+					<table border="1">
 						<tr>
 							<th>ドライブ</th>
 							<th>アナライズ</th>
@@ -66,10 +67,10 @@
 							<th>ボランティア</th>
 						</tr>
 						<tr>
-							<td th:href="${infoDrive}"></td>
-							<td th:href="${infoAnalyze}"></td>
-							<td th:href="${infoCreate}"></td>
-							<td th:href="${infoVolunteer}"></td>
+							<td th:text="${infoDrive}"></td>
+							<td th:text="${infoAnalyze}"></td>
+							<td th:text="${infoCreate}"></td>
+							<td th:text="${infoVolunteer}"></td>
 						</tr>
 					</table>
 				</div>
@@ -77,7 +78,7 @@
 			<div class="graph">
 				<div class="graph-dot">
 					<div>営業部</div>
-					<table>
+					<table border="1">
 						<tr>
 							<th>ドライブ</th>
 							<th>アナライズ</th>
@@ -85,17 +86,17 @@
 							<th>ボランティア</th>
 						</tr>
 						<tr>
-							<td th:href="${salesDrive}"></td>
-							<td th:href="${salesAnalyze}"></td>
-							<td th:href="${salesCreate}"></td>
-							<td th:href="${salesVolunteer}"></td>
+							<td th:text="${salesDrive}"></td>
+							<td th:text="${salesAnalyze}"></td>
+							<td th:text="${salesCreate}"></td>
+							<td th:text="${salesVolunteer}"></td>
 						</tr>
 					</table>
 				</div>
 
 				<div class="graph_dot">
 					<div>技術部</div>
-					<table>
+					<table border="1">
 						<tr>
 							<th>ドライブ</th>
 							<th>アナライズ</th>
@@ -103,10 +104,10 @@
 							<th>ボランティア</th>
 						</tr>
 						<tr>
-							<td th:href="${techDrive}"></td>
-							<td th:href="${techAnalyze}"></td>
-							<td th:href="${techCreate}"></td>
-							<td th:href="${techVolunteer}"></td>
+							<td th:text="${techDrive}"></td>
+							<td th:text="${techAnalyze}"></td>
+							<td th:text="${techCreate}"></td>
+							<td th:text="${techVolunteer}"></td>
 						</tr>
 					</table>
 				</div>
