@@ -1,10 +1,119 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<title>管理者画面</title>
+	</head>
+	<body>
+		<div class=”main”>
+			<h1>モチベーションタイプ診断</h1>
+			<a th:href="@{/top}" class="home-btn">社員一覧画面</a>
+			<a th:href="@{/logout}" >ログアウト</a>
 
-</body>
+			<div>弊社のモチベーションタイプは<strong th:text=${type}></strong>です。</div>
+
+			<div class="graph">
+				<div class="graph-circle"></div>
+				<div class="graph_dot"></div>
+			</div>
+
+			<div>弊社全体のモチベーションタイプ</div>
+			<table border="1">
+				<tr>
+					<th>ドライブ</th>
+					<th>アナライズ</th>
+					<th>クリエイト</th>
+					<th>ボランティア</th>
+				</tr>
+				<tr>
+
+					<td th:text="${drive}"></td>
+					<td th:text="${analyze}"></td>
+					<td th:text="${create}"></td>
+					<td th:text="${volunteer}"></td>
+				</tr>
+			</table>
+
+
+			<!-- 下記部署グラフ -->
+			<div>部署によっては以下の通りです</div>
+
+			<div class="graph">
+				<div class="graph-dot">
+					<div>総務部</div>
+					<table border="1">
+						<tr>
+							<th>ドライブ</th>
+							<th>アナライズ</th>
+							<th>クリエイト</th>
+							<th>ボランティア</th>
+						</tr>
+						<tr>
+							<td th:text="${greatestDrive}"></td>
+							<td th:text="${greatestAnalyze}"></td>
+							<td th:text="${greatestCreate}"></td>
+							<td th:text="${greatestVolunteer}"></td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="graph_dot">
+					<div>情報部</div>
+					<table border="1">
+						<tr>
+							<th>ドライブ</th>
+							<th>アナライズ</th>
+							<th>クリエイト</th>
+							<th>ボランティア</th>
+						</tr>
+						<tr>
+							<td th:text="${infoDrive}"></td>
+							<td th:text="${infoAnalyze}"></td>
+							<td th:text="${infoCreate}"></td>
+							<td th:text="${infoVolunteer}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="graph">
+				<div class="graph-dot">
+					<div>営業部</div>
+					<table border="1">
+						<tr>
+							<th>ドライブ</th>
+							<th>アナライズ</th>
+							<th>クリエイト</th>
+							<th>ボランティア</th>
+						</tr>
+						<tr>
+							<td th:text="${salesDrive}"></td>
+							<td th:text="${salesAnalyze}"></td>
+							<td th:text="${salesCreate}"></td>
+							<td th:text="${salesVolunteer}"></td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="graph_dot">
+					<div>技術部</div>
+					<table border="1">
+						<tr>
+							<th>ドライブ</th>
+							<th>アナライズ</th>
+							<th>クリエイト</th>
+							<th>ボランティア</th>
+						</tr>
+						<tr>
+							<td th:text="${techDrive}"></td>
+							<td th:text="${techAnalyze}"></td>
+							<td th:text="${techCreate}"></td>
+							<td th:text="${techVolunteer}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<footer>
+		</footer>
+	</body>
 </html>

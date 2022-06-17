@@ -38,6 +38,9 @@ public class Result {
 	@Column(name = "open")
 	private Integer open;
 
+	@Column(name = "department_id")
+	private Integer departmentId;
+
 	@Column(name = "created_date", insertable = false, updatable = false)
 	private Timestamp createdDate;
 
@@ -106,6 +109,14 @@ public class Result {
 
 	public void setOpen(Integer open) {
 		this.open = open;
+	}
+
+	public Integer getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(Integer departmentId) {
+		this.departmentId = departmentId;
 	}
 
 	public Timestamp getCreatedDate() {

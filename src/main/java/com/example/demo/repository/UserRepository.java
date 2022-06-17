@@ -9,4 +9,5 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	@Query(value = "SELECT * FROM Users WHERE account = :account", nativeQuery = true)
 	User findByAccount(String account);
 
+
 }
