@@ -6,72 +6,107 @@
 <!-- ヘッダーは画面レイアウトの際に作成するのでタグのみ生成 -->
 
 <div class=”main”>
-　　<div class=”~~” th:if ~~~...>
-　　　　<input th:action~~~... />
-
-		<a th:href="@{/logout}" class="logout-btn">ログアウト</a>
-　　</div>
-
-	<div th:if="${errorMessages}" th:each="error : ${errorMessages}">
-		<a th:text="${error}"></a>
+	<a th:href="@{/logout}" class="logout-btn">ログアウト</a>
+　　<div th:if="${loginUser.implementation} == 0">
+			<a href= "/diagnose">モチベーションタイプ診断を受ける</a>
+		</th:if>
 	</div>
+　　<!-- <div th:if="${loginUser.implementation} == 1"> -->
+　　　　	<!-- <input th:action~~~... /> -->
 
-	<h2>ようこそ、<th:text="${loginUser.name} " />さん</h2>
-	<p>モチベーションタイプは、</p>><h3><th:text="${loginUser.type_id} " /></h3><p>のようです</p>
+　　
 
-　　<table>
-		<thead>
-	　　　　<tr>
-	　　　　　　<th>欲求</th>
-	　　　　　　<th>KEY</th>
-	　　　　　　<th>初対面</th>
-	　　　　　　<th>Happy Word</th>
-	　　　　　　<th>趣向</th>
-	　　　　　　<th>ストレス</th>
-	　　　　　　<th>強み</th>
-	　　　　　　<th>課題</th>
-	　　　　　　<td></td>
-	　　　　</tr>
-		</thead>
-		<tbody>
-			<tr  th:each="type : ${types}">
-				<td th:text="${tyepe.desire}"></td>
-				<td th:text="${tyepe.type_key}"></td>
-				<td th:text="${tyepe.first_meeting}"></td>
-				<td th:text="${tyepe.happy_word}"></td>
-				<td th:text="${tyepe.taste}"></td>
-				<td th:text="${tyepe.stress}"></td>
-				<td th:text="${tyepe.strengths}"></td>
-				<td th:text="${tyepe.task}"></td>
-			</tr>
-		</tbody>
-　　</table>
-
-	<div>
-		<div>
-		<!-- 円グラフを挿入予定 -->
+		<div th:if="${errorMessages}" th:each="error : ${errorMessages}">
+			<a th:text="${error}"></a>
 		</div>
 
+		<h2 th:text="'ようこそ、 '+ ${loginUser.name}+'さん' "></h2>
+
+
+		<p>モチベーションタイプは</p>
+		<h3 th:text="${result.typeId}"></h3>
+		<p>のようです</p>
+
+	　　<table>
+			<thead>
+		　　　　<tr>
+		　　　　　　<th>欲求</th>
+		　　　　　　<th>KEY</th>
+		　　　　　　<th>初対面</th>
+		　　　　　　<th>Happy Word</th>
+		　　　　　　<th>趣向</th>
+		　　　　　　<th>ストレス</th>
+		　　　　　　<th>強み</th>
+		　　　　　　<th>課題</th>
+		　　　　</tr>
+			</thead>
+			<tbody>
+				<tr th:each="type : ${types}">
+					<td th:text="${type.desire}"></td>
+					<td th:text="${type.type_key}"></td>
+					<td th:text="${type.first_meeting}"></td>
+					<td th:text="${type.happy_word}"></td>
+					<td th:text="${type.taste}"></td>
+					<td th:text="${type.stress}"></td>
+					<td th:text="${type.strengths}"></td>
+					<td th:text="${type.task}"></td>
+				</tr>
+			</tbody>
+	　　</table>
+
 		<div>
-			<h3>あなたの前回のモチベーションタイプの割合は</h3>
-			<table>
-				<thead>
-					<th>アナライズ</th>
-					<th>ボランティア</th>
-					<th>ドライブ</th>
-					<th>クリエイト</th>
-				</thead>
-				<tbody>
-					<tr th:each="result:${results}">
-					<td th:text="${result.analyze}"></td>
-					<td th:text="${result.volunteer}"></td>
-					<td th:text="${result.drive}"></td>
-					<td th:text="${result.create}"></td>
-					</tr>
-				</tbody>
-			</table>
+			<div>
+			<!-- 円グラフを挿入予定 -->
+			<h3>モチベーションタイプの割合</h3>
+			<canvas id="myPieChart"></canvas>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+			<script>
+			  var ctx = document.getElementById("myPieChart");
+			  var myPieChart = new Chart(ctx, {
+			    type: 'doughnut',
+			    data: {
+			      labels: ["アナライズ", "ボランティア", "ドライブ", "クリエイト"],
+			      datasets: [{
+			          backgroundColor: [
+			              "red",
+			              "orange",
+			              "Yellow",
+			              "pink"
+			          ],
+			          data: [38, 31, 21, 10]
+			      }]
+			    },
+			    options: {
+			      title: {
+			        display: true
+			      }
+			    }
+			  });
+			</script>
+			</div>
+
+			<div>
+				<h3>あなたの前回のモチベーションタイプの割合は</h3>
+				<table>
+					<thead>
+						<th>アナライズ</th>
+						<th>ボランティア</th>
+						<th>ドライブ</th>
+						<th>クリエイト</th>
+					</thead>
+					<tbody>
+						<tr th:each="result:${results}">
+						<td th:text="${result.analyze}"></td>
+						<td th:text="${result.volunteer}"></td>
+						<td th:text="${result.drive}"></td>
+						<td th:text="${result.create}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
+		<!-- </th:if>
+	</div> -->
 
 </div>
 <footer>

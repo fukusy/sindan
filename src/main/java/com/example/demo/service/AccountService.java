@@ -20,4 +20,9 @@ public class AccountService {
 	public void save(User loginUser) {
 		userRepository.save(loginUser);
 	}
+
+	public User userSelect(Integer id) {
+		User user = userRepository.findById(id).orElse(null);
+		return user;
+	}
 }
